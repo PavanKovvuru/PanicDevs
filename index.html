@@ -21,7 +21,7 @@
             right: 0;
             bottom: 0;
             width: (100%)- 5px;
-            background-color: #005c78;
+            background-color: #132033;
             color: #f3f7ec;
             display: flex;
             align-items: center;
@@ -52,8 +52,8 @@
             margin-right: 10px;
             padding: 5px 10px;
             font-size: 0.7em;
-            color: #f3f7ec ;
-            background-color: #006989;
+            color: #132033 ;
+            background-color: #eadbc8;
             border: none;
             cursor: pointer;
             font-family: 'Source Code Pro', monospace;
@@ -61,21 +61,36 @@
             transition: 0.3s;
         }
         .header-buttons button:hover {
-            background-color: #e88d67;
+            background-color: #dac0a3;
         }
         .header img {
             height: 40px;
             margin-right: 20px;
         }
-        .content {
-            margin-top: 100vh;
+        .content1 {
+            margin-top: 101vh;
             padding: 20px;
-            padding-top: 80px;
+            padding-top: 10px;
+            background-color: #eadbc8;
+            border-radius: 10px;
+            margin-left: 5px;
+            margin-right: 5px;       
+        }
+        .content2 {
+            
+            padding: 20px;
+            padding-top: 10px;
+            background-color: #dac0a3;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-right: 5px;
+            margin-left: 5px;
+                  
         }
         .disappear {
             opacity: 1;
             transition: opacity 0.5s ease;
-            color: #e88d67 ;
+            color: #dac0a3 ;
             font-size: 0.9em;
         }
         .hidden {
@@ -89,7 +104,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 2em;
-            color: #006989 ;
+            color: #2A3647 ;
             transition: opacity 0.5s ease;
         }
         .arrow-down.hidden {
@@ -103,7 +118,7 @@
     <div class="header-content" id="header-content">
         <img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/>
         <span>PanicDevs</span>
-        <span id="mission-text" class="disappear" style="margin-left: 50px;">"Building the Future, One Line at a Time."</span>
+        <span id="mission-text" class="disappear" style="margin-left: 50px;">'Building the Future, One Line at a Time'</span>
         <div class="header-buttons" id="header-buttons">
             <button>About Us</button>
             <button>Contact Us</button>
@@ -113,11 +128,16 @@
     <div class="arrow-down" id="arrow-down">&#x2193;</div>
 </div>
 
-<div class="content">
+<div class="content1">
     <p>
         At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
     <!-- Add more content here to enable scrolling -->
     <p>We pride ourselves on our ability to translate complex requirements into user-friendly, high-performance applications that enhance business operations and user engagement. Whether you need a dynamic web application, a sophisticated mobile app, or advanced AI-driven solutions, PanicDevs is your trusted partner in building the future, one line of code at a time.</p>
+
+</div>
+<div class="content2">
+    <p>
+        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
 
 </div>
 
