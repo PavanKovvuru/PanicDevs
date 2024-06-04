@@ -1,38 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <meta charset="utf-8" />
- <title>PanicDevs-Home</title>
- <link rel="icon" type="image/x-icon" href="/c_logo.png" />
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" />
- <style>
-   body {
-     margin: 0;
-     font-family: 'Source Code Pro', monospace;
-   }
-   .header {
-     background-color: #1679AB;
-     display: flex;
-     align-items: center;
-     padding: 10px 20px;
-   }
-   .header img {
-     height: 40px;
-     margin-right: 30px;
-     margin-right: 20px;
-   }
-   .header h1 {
-     color: white;
-     margin: 0;
-     font-size: 35px;
-     font-weight: 500;
-   }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic Devs</title>
+    <link rel="icon" type="image/x-icon" href="/c_logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Source Code Pro', monospace;
+            background-color: #f3f7ec ;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: (100%)- 5px;
+            background-color: #005c78;
+            color: #f3f7ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            z-index: 1000;
+            transition: height 0.1s ease, font-size 0.1s ease;
+            transition: border-radius 0.1s ease;
+            border-radius: 120px;
+            margin: 5px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding-left: 30px;
+            transition: transform 0.5s ease;
+        }
+        .header-buttons {
+            display: none;
+            margin-left: auto;
+            margin-right: 20px;
+            font-family: 'Source Code Pro', monospace;
+        }
+        .header-buttons button {
+            margin-left: 0px;
+            margin-right: 10px;
+            padding: 5px 10px;
+            font-size: 0.7em;
+            color: #f3f7ec ;
+            background-color: #006989;
+            border: none;
+            cursor: pointer;
+            font-family: 'Source Code Pro', monospace;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .header-buttons button:hover {
+            background-color: #e88d67;
+        }
+        .header img {
+            height: 40px;
+            margin-right: 20px;
+        }
+        .content {
+            margin-top: 100vh;
+            padding: 20px;
+            padding-top: 80px;
+        }
+        .disappear {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            color: #e88d67 ;
+            font-size: 0.9em;
+        }
+        .hidden {
+            opacity: 0;
+            
+            
+        }
+        .arrow-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            color: #006989 ;
+            transition: opacity 0.5s ease;
+        }
+        .arrow-down.hidden {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
- <div class="header">
-   <img src="/c_logo.png" alt="PanicDevs Logo" />
-   <h1>Panic Devs</h1>
- </div>
+
+<div class="header" id="header">
+    <div class="header-content" id="header-content">
+        <img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/>
+        <span>PanicDevs</span>
+        <span id="mission-text" class="disappear" style="margin-left: 50px;">"Building the Future, One Line at a Time."</span>
+        <div class="header-buttons" id="header-buttons">
+            <button>About Us</button>
+            <button>Contact Us</button>
+        </div>
+       
+    </div>
+    <div class="arrow-down" id="arrow-down">&#x2193;</div>
+</div>
+
+<div class="content">
+    <p>
+        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
+    <!-- Add more content here to enable scrolling -->
+    <p>We pride ourselves on our ability to translate complex requirements into user-friendly, high-performance applications that enhance business operations and user engagement. Whether you need a dynamic web application, a sophisticated mobile app, or advanced AI-driven solutions, PanicDevs is your trusted partner in building the future, one line of code at a time.</p>
+
+</div>
+
+<script>
+    var arrowDown = document.getElementById('arrow-down');
+
+    window.onscroll = function() {
+        var header = document.getElementById('header');
+        var headerContent = document.getElementById('header-content');
+        var missionText = document.getElementById('mission-text');
+        var headerButtons = document.getElementById('header-buttons');
+        var scrollPosition = window.scrollY;
+        var maxHeight = window.innerHeight - 10;
+        var minHeight = 80;
+        var maxRadius= 120;
+        var minRadius= 10;
+
+        
+        var newHeight = Math.max(minHeight, maxHeight - scrollPosition);
+        header.style.height = newHeight + 'px';
+
+        var newRadius = Math.max(minRadius, maxRadius - scrollPosition);
+        header.style.borderRadius = newRadius + 'px';
+
+        var maxFontSize = 2;
+        var minFontSize = 1.5;
+        var fontSize = Math.max(minFontSize, maxFontSize - (scrollPosition / maxHeight) * (maxFontSize - minFontSize));
+        header.style.fontSize = fontSize + 'em';
+
+        var maxTranslateX = 0;
+        var minTranslateX = -header.clientWidth / 2 + headerContent.clientWidth / 2 + 20;
+        var translateX = Math.max(minTranslateX, maxTranslateX - (scrollPosition / maxHeight) * (maxTranslateX - minTranslateX));
+        // headerContent.style.transform = `translateX(${translateX}px)`;
+
+        if (newHeight <= minHeight + 1) {
+            headerButtons.style.display = 'flex';
+        } else {
+            headerButtons.style.display = 'none';
+        }
+
+        if (scrollPosition > 0) {
+            missionText.classList.add('hidden');
+            arrowDown.classList.add('hidden');
+        } else {
+            missionText.classList.remove('hidden');
+            arrowDown.classList.remove('hidden');
+        }
+    };
+
+    window.onresize = function() {
+        arrowDown.classList.add('hidden');
+    };
+
+    window.onload = function() {
+        arrowDown.classList.remove('hidden');
+    };
+</script>
+
 </body>
 </html>
