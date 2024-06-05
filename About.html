@@ -91,7 +91,17 @@
         }
         .content-box button:hover {
             background-color: #875938;
-            
+        }
+        .quote {
+            opacity: 0;
+            transition: opacity 1s ease;
+            margin-top: 20px;
+            font-size: 1.5em;
+            text-align: center;
+            color: #A37249;
+        }
+        .quote.visible {
+            opacity: 1;
         }
     </style>
 </head>
@@ -101,7 +111,7 @@
         <img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/>
         <span>PanicDevs</span>
         <div class="header-buttons" id="header-buttons">
-           <a href = "index.html"><button>Home Page</button></a>
+           <a href="index.html"><button>Home Page</button></a>
             <button>Contact Us</button>
         </div>   
     </div>
@@ -111,9 +121,23 @@
         <p>"At the forefront of the tech industry, our ambitious startup specializes in full-stack development, crafting robust and seamless digital experiences from the ground up. Driven by a passion for innovation and a commitment to excellence, we design comprehensive web solutions that empower businesses to thrive in the digital age. As architects of tomorrow’s technology, we transform cutting-edge ideas into reality, providing efficient, all-in-one solutions that are as persuasive as they are powerful. Our mission is to set new standards in the tech landscape, ensuring that each project not only meets but exceeds the evolving demands of the connected world."</p>
         <button onclick="window.location.href='mailto:contact@yourcompany.com';">Talk to Us</button>
     </div>
+    <div class="quote" id="quote">
+        "Innovation distinguishes between a leader and a follower." - Steve Jobs
+    </div>
     <div class="content-box">
         <h1>Our Goals</h1>
         <p>"Focused on sustainable growth and technological leadership, our goals include expanding our reach across multiple platforms, fostering a culture of continuous learning and innovation, and building lasting partnerships that help us and our clients achieve pioneering success in their respective markets."</p>
     </div>
+    <script>
+        document.addEventListener('scroll', function() {
+            const quote = document.getElementById('quote');
+            const quotePosition = quote.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+
+            if (quotePosition < screenPosition) {
+                quote.classList.add('visible');
+            }
+        });
+    </script>
 </body>
 </html>
