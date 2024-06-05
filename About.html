@@ -23,13 +23,16 @@
             left: 0;
             right: 0;
             height: 80px;
+            width: (100%)- 5px;
             background-color: #132033;
             color: #f3f7ec;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            font-size: 2.5vh;
             z-index: 1000;
+            transition: height 0.1s ease, font-size 0.1s ease;
+            transition: border-radius 0.1s ease;
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
@@ -38,18 +41,18 @@
             display: flex;
             align-items: center;
             width: 100%;
-            padding-left: 30px;
+            padding-left: 2vw;
             transition: transform 0.5s ease;
         }
         .header-buttons {
             margin-left: auto;
-            margin-right: 10px;
+            margin-right: 20px;
             font-family: 'Source Code Pro', monospace;
         }
         .header-buttons button {
-            margin-right: 5px; /* Reduced from 10px to 5px */
+            margin-right: 1vw; /* Reduced from 10px to 5px */
             padding: 5px 10px;
-            font-size: 0.7em;
+            font-size: 2vh;
             color: #132033;
             background-color: #eadbc8;
             border: none;
