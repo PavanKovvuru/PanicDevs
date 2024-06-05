@@ -26,11 +26,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2em;
+            font-size: 4vh;
             z-index: 1000;
             transition: height 0.1s ease, font-size 0.1s ease;
             transition: border-radius 0.1s ease;
-            border-radius: 120px;
+            border-radius: 60px;
+            
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
         }
@@ -38,7 +39,7 @@
             display: flex;
             align-items: center;
             width: 100%;
-            padding-left: 30px;
+            padding-left: 2vw;
             transition: transform 0.5s ease;
         }
         .header-buttons {
@@ -49,9 +50,9 @@
         }
         .header-buttons button {
             margin-left: 0px;
-            margin-right: 10px;
+            margin-right: 1vw;
             padding: 5px 10px;
-            font-size: 0.7em;
+            font-size: 2vh;
             color: #132033 ;
             background-color: #eadbc8;
             border: none;
@@ -68,6 +69,7 @@
             margin-right: 20px;
         }
         .content1 {
+            font-size: 2vh;
             margin-top: 101vh;
             padding: 20px;
             padding-top: 10px;
@@ -77,10 +79,22 @@
             margin-right: 5px;       
         }
         .content2 {
-            
+            font-size: 2vh;
             padding: 20px;
             padding-top: 10px;
             background-color: #dac0a3;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-right: 5px;
+            margin-left: 5px;
+                  
+        }
+        .content3 {
+            
+            font-size: 2vh;
+            padding: 20px;
+            padding-top: 10px;
+            background-color: #eadbc8;
             border-radius: 10px;
             margin-top: 15px;
             margin-right: 5px;
@@ -91,11 +105,15 @@
             opacity: 1;
             transition: opacity 0.5s ease;
             color: #dac0a3 ;
-            font-size: 0.9em;
+            font-size: 4vh;
+        }
+        .hidden1 {
+            opacity: 0;   
+            display: none;
+            
         }
         .hidden {
-            opacity: 0;
-            
+            opacity: 0;   
             
         }
         .arrow-down {
@@ -142,6 +160,11 @@
         At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
 
 </div>
+<div class="content3">
+    <p>
+        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences.</p>
+
+</div>
 
 <script>
     var arrowDown = document.getElementById('arrow-down');
@@ -154,7 +177,7 @@
         var scrollPosition = window.scrollY;
         var maxHeight = window.innerHeight - 10;
         var minHeight = 80;
-        var maxRadius= 120;
+        var maxRadius= 60;
         var minRadius= 10;
 
         
@@ -164,10 +187,10 @@
         var newRadius = Math.max(minRadius, maxRadius - scrollPosition);
         header.style.borderRadius = newRadius + 'px';
 
-        var maxFontSize = 2;
-        var minFontSize = 1.5;
+        var maxFontSize = 4;
+        var minFontSize = 2.5;
         var fontSize = Math.max(minFontSize, maxFontSize - (scrollPosition / maxHeight) * (maxFontSize - minFontSize));
-        header.style.fontSize = fontSize + 'em';
+        header.style.fontSize = fontSize + 'vh';
 
         var maxTranslateX = 0;
         var minTranslateX = -header.clientWidth / 2 + headerContent.clientWidth / 2 + 20;
@@ -181,22 +204,23 @@
         }
 
         if (scrollPosition > 0) {
-            missionText.classList.add('hidden');
+            missionText.classList.add('hidden1');
             arrowDown.classList.add('hidden');
         } else {
-            missionText.classList.remove('hidden');
+            missionText.classList.remove('hidden1');
             arrowDown.classList.remove('hidden');
         }
     };
 
-    window.onresize = function() {
-        arrowDown.classList.add('hidden');
-    };
+    //window.onresize = function() {
+    //   arrowDown.classList.add('hidden');
+    //};
 
     window.onload = function() {
-        arrowDown.classList.remove('hidden');
+        arrowDown.classList.remove('hidden1');
     };
 </script>
 
 </body>
 </html>
+
