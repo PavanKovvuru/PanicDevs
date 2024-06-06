@@ -23,7 +23,7 @@
             left: 0;
             right: 0;
             height: 80px;
-            width: (100%)- 5px;
+            width: calc(100% - 10px);
             background-color: #132033;
             color: #f3f7ec;
             display: flex;
@@ -31,8 +31,7 @@
             justify-content: center;
             font-size: 2.5vh;
             z-index: 1000;
-            transition: height 0.1s ease, font-size 0.1s ease;
-            transition: border-radius 0.1s ease;
+            transition: height 0.1s ease, font-size 0.1s ease, border-radius 0.1s ease;
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
@@ -50,7 +49,7 @@
             font-family: 'Source Code Pro', monospace;
         }
         .header-buttons button {
-            margin-right: 1vw; /* Reduced from 10px to 5px */
+            margin-right: 1vw;
             padding: 5px 10px;
             font-size: 2vh;
             color: #132033;
@@ -72,7 +71,7 @@
             background-color: #E0CAB7;
             border-radius: 10px;
             padding: 30px;
-            margin-top: 16px;
+            margin-top: 80px; /* Adjusted to push down due to fixed header */
             width: 96%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -94,7 +93,7 @@
         }
         .quote {
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 3s ease;
             margin-top: 20px;
             font-size: 1.5em;
             text-align: center;
@@ -102,6 +101,51 @@
         }
         .quote.visible {
             opacity: 1;
+        }
+        .skills-section {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px; /* Added margin-bottom for space after the section */
+        }
+        .skills-section h1 {
+            margin-bottom: 20px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .skill-bubble {
+            background-color: #E0CAB7;
+            color: #132033;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            font-family: 'Source Code Pro', monospace;
+        }
+        .footer {
+            width: calc(100% - 10px);
+            background-color: #3A506B; /* Lighter color than header */
+            color: #f3f7ec;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-family: 'Source Code Pro', monospace;
+            margin-top: 20px; /* Add some margin-top to space out from previous content */
+            border-radius: 10px;
+            margin: 5px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer-content {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .footer-content span {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -127,6 +171,26 @@
     <div class="content-box">
         <h1>Our Goals</h1>
         <p>"Focused on sustainable growth and technological leadership, our goals include expanding our reach across multiple platforms, fostering a culture of continuous learning and innovation, and building lasting partnerships that help us and our clients achieve pioneering success in their respective markets."</p>
+    </div>
+    <div class="skills-section">
+        <h1>What We Provide</h1>
+        <div class="skills">
+            <div class="skill-bubble">JavaScript</div>
+            <div class="skill-bubble">Java</div>
+            <div class="skill-bubble">React</div>
+            <div class="skill-bubble">Python</div>
+            <div class="skill-bubble">Node.js</div>
+            <div class="skill-bubble">Django</div>
+            <div class="skill-bubble">HTML & CSS</div>
+            <div class="skill-bubble">SQL</div>
+            <div class="skill-bubble">AWS</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <span>&copy; 2024</span>
+            <span>PanicDevs</span>
+        </div>
     </div>
     <script>
         document.addEventListener('scroll', function() {
