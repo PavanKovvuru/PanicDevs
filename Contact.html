@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact us</title>
+    <title>Contact Us</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <style>
+   
+   <style>
         body {
-            background-color: #FEFAF6;
+            background-color: #ffffff;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
             height: 100%;
             margin: 5px;
             font-family: 'Source Code Pro', monospace;
             margin-top: 80px;
             flex-direction: column;
+            color: #000000;
         }
         .header {
             position: fixed;
@@ -24,23 +26,23 @@
             right: 0;
             height: 80px;
             width: calc(100% - 10px);
-            background-color: #132033;
-            color: #f3f7ec;
+            background-color: #000000;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             font-size: 2.5vh;
             z-index: 1000;
             transition: height 0.1s ease, font-size 0.1s ease, border-radius 0.1s ease;
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            padding-left: 2vw;
         }
         .header-content {
             display: flex;
             align-items: center;
             width: 100%;
-            padding-left: 2vw;
             transition: transform 0.5s ease;
         }
         .header-buttons {
@@ -52,8 +54,8 @@
             margin-right: 1vw;
             padding: 5px 10px;
             font-size: 2vh;
-            color: #132033;
-            background-color: #eadbc8;
+            color: #ffffff;
+            background-color: #333333;
             border: none;
             cursor: pointer;
             font-family: 'Source Code Pro', monospace;
@@ -61,24 +63,31 @@
             transition: 0.3s;
         }
         .header-buttons button:hover {
-            background-color: #dac0a3;
+            background-color: #555555;
         }
         .header img {
             height: 40px;
             margin-right: 20px;
         }
+        .tagline {
+            margin-left: 2vw;
+            font-size: 1.5em;
+            text-align: left;
+            width: 95%;
+        }
         .content-box {
-            background-color: #E0CAB7;
+            background-color: #f0f0f0;
             border-radius: 10px;
             padding: 30px;
-            margin-top: 80px; /* Adjusted to push down due to fixed header */
-            width: 95%;
+            margin-top: 20px; /* Adjusted to push down due to fixed header */
+            width: 93%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
             margin-bottom: 20px;
+            margin-left: 2vw;
         }
         .content-box button {
-            background-color: #A37249;
+            background-color: #000000;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -89,46 +98,54 @@
             font-family: 'Source Code Pro', monospace;
         }
         .content-box button:hover {
-            background-color: #875938;
+            background-color: #333333;
         }
-        .quote {
-            opacity: 0;
-            transition: opacity 3s ease;
-            margin-top: 20px;
-            font-size: 1.5em;
-            text-align: center;
-            color: #A37249;
-        }
-        .quote.visible {
-            opacity: 1;
-        }
-        .skills-section {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 40px; /* Added margin-bottom for space after the section */
-        }
-        .skills-section h1 {
-            margin-bottom: 20px;
-        }
-        .skills {
+        .contact-form {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 20px;
+            width: 50%;
         }
-        .skill-bubble {
-            background-color: #E0CAB7;
-            color: #132033;
-            padding: 10px 20px;
-            border-radius: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 1em;
+        .contact-form .name-fields {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+        .contact-form .name-fields input {
+            width: 48%;
+            margin-right: 1vw;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000000;
+            border-radius: 5px;
             font-family: 'Source Code Pro', monospace;
+        }
+        .contact-form input[type="tel"] {
+            width: 100%;
+        }
+        .contact-form button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Source Code Pro', monospace;
+        }
+        .contact-form button:hover {
+            background-color: #333333;
         }
         .footer {
             width: calc(100% - 10px);
-            background-color: #3A506B; /* Lighter color than header */
-            color: #f3f7ec;
+            background-color: #333333; /* Lighter color than header */
+            color: #ffffff;
             padding: 20px 0;
             display: flex;
             justify-content: flex-end;
@@ -148,6 +165,21 @@
             margin-right: 5px;
         }
     </style>
+    <script>
+        function validateName(event) {
+            const char = String.fromCharCode(event.which);
+            if (!/[a-zA-Z]/.test(char)) {
+                event.preventDefault();
+            }
+        }
+
+        function validatePhone(event) {
+            const char = String.fromCharCode(event.which);
+            if (!/[0-9]/.test(char)) {
+                event.preventDefault();
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="header" id="header">
@@ -156,16 +188,34 @@
         <span>PanicDevs</span>
         <div class="header-buttons" id="header-buttons">
            <a href="index.html"><button>Home Page</button></a>
-           <a href="About.html"></a> <button>About Us</button></a>
+           <a href="About.html"><button>About Us</button></a>
         </div>   
     </div>
 </div>
 
-    <div class="footer">
-        <div class="footer-content">
-            <span>&copy; 2024</span>
-            <span>PanicDevs</span>
+<div class="tagline">
+    <p>Why Choose PanicDevs? We deliver cutting-edge solutions with efficiency and reliability.</p>
+</div>
+
+<div class="content-box">
+    <h1>Let's Connect</h1>
+    <form class="contact-form">
+        <div class="name-fields">
+            <input type="text" name="firstName" placeholder="First Name" onkeypress="validateName(event)" required>
+            <input type="text" name="lastName" placeholder="Last Name" onkeypress="validateName(event)" required>
         </div>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number" onkeypress="validatePhone(event)" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="footer">
+    <div class="footer-content">
+        <span>&copy; 2024</span>
+        <span>PanicDevs</span>
     </div>
+</div>
 </body>
 </html>
