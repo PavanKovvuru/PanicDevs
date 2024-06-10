@@ -254,7 +254,7 @@
             var rect = dot.getBoundingClientRect();
             var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
             var maxDist = 70; // Maximum distance for effect
-            var scale = Math.max(1, 1.8 - dist / maxDist); // Scale effect
+            var scale = Math.max(1, 2 - dist / maxDist); // Scale effect
             dot.style.width = 4 * scale + 'px';
             dot.style.height = 4 * scale + 'px';
         }
