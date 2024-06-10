@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #FEFAF6;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,8 +24,15 @@
             right: 0;
             height: 80px;
             width: calc(100% - 10px);
-            background-color: #132033;
-            color: #f3f7ec;
+            background-color: #000000;
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(225deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(315deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%);
+            background-position: 20px 0, 20px 0, 0 0, 0 0;
+            background-size: 40px 40px;
+            background-repeat: repeat;
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,6 +42,16 @@
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(200, 200, 200, 0.5);
+            pointer-events: none;
+            z-index: 0;
+            transition: width 0.3s ease, height 0.3s ease;
         }
         .header-content {
             display: flex;
@@ -52,8 +69,8 @@
             margin-right: 1vw;
             padding: 5px 10px;
             font-size: 2vh;
-            color: #132033;
-            background-color: #eadbc8;
+            color: #ffffff;
+            background-color: #333333;
             border: none;
             cursor: pointer;
             font-family: 'Source Code Pro', monospace;
@@ -61,14 +78,14 @@
             transition: 0.3s;
         }
         .header-buttons button:hover {
-            background-color: #dac0a3;
+            background-color: #555555;
         }
         .header img {
             height: 40px;
             margin-right: 20px;
         }
         .content-box {
-            background-color: #E0CAB7;
+            background-color: #f0f0f094;;
             border-radius: 10px;
             padding: 30px;
             margin-top: 80px; /* Adjusted to push down due to fixed header */
@@ -76,10 +93,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
         }
         .content-box button {
-            background-color: #A37249;
-            color: white;
+            color: #ffffff;
+            background-color: #333333;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
@@ -89,15 +108,16 @@
             font-family: 'Source Code Pro', monospace;
         }
         .content-box button:hover {
-            background-color: #875938;
+            background-color: #555555;
         }
         .quote {
             opacity: 0;
+            position: relative;
             transition: opacity 3s ease;
             margin-top: 20px;
             font-size: 1.5em;
             text-align: center;
-            color: #A37249;
+            color: #000000;
         }
         .quote.visible {
             opacity: 1;
@@ -117,7 +137,7 @@
             gap: 10px;
         }
         .skill-bubble {
-            background-color: #E0CAB7;
+            background-color: #c0c0c0;
             color: #132033;
             padding: 10px 20px;
             border-radius: 25px;
@@ -127,8 +147,8 @@
         }
         .footer {
             width: calc(100% - 10px);
-            background-color: #3A506B; /* Lighter color than header */
-            color: #f3f7ec;
+            background-color: #333333; /* Lighter color than header */
+            color: #ffffff;
             padding: 20px 0;
             display: flex;
             justify-content: flex-end;
@@ -138,6 +158,8 @@
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            position: relative;
         }
         .footer-content {
             margin-right: 20px;
@@ -193,6 +215,37 @@
         </div>
     </div>
     <script>
+            var body = document.body;
+
+function createDots() {
+    var dotSpacing = 20; // space between dots
+    var bodyHeight = document.body.scrollHeight; // get total body height
+    for (var x = 0; x < window.innerWidth; x += dotSpacing) {
+        for (var y = 0; y < bodyHeight; y += dotSpacing) { // loop through entire body height
+            var dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+            body.appendChild(dot);
+        }
+    }
+}
+
+createDots();
+
+body.addEventListener('mousemove', function (e) {
+    var dots = document.getElementsByClassName('dot');
+    for (var i = 0; i < dots.length; i++) {
+        var dot = dots[i];
+        var rect = dot.getBoundingClientRect();
+        var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
+        var maxDist = 70; // Maximum distance for effect
+        var scale = Math.max(1, 1.8 - dist / maxDist); // Scale effect
+        dot.style.width = 4 * scale + 'px';
+        dot.style.height = 4 * scale + 'px';
+    }
+});
+
         document.addEventListener('scroll', function() {
             const quote = document.getElementById('quote');
             const quotePosition = quote.getBoundingClientRect().top;

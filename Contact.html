@@ -7,17 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
    
    <style>
-        body {
-            background-color: #ffffff;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+        body, html {
+            margin: 0;
+            padding: 0;
             height: 100%;
-            margin: 5px;
             font-family: 'Source Code Pro', monospace;
-            margin-top: 80px;
-            flex-direction: column;
+            background-color:  #ffffff;
             color: #000000;
+            position: relative;
+        }
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(200, 200, 200, 0.5);
+            pointer-events: none;
+            z-index: 0;
+            transition: width 0.3s ease, height 0.3s ease;
         }
         .header {
             position: fixed;
@@ -27,6 +34,13 @@
             height: 80px;
             width: calc(100% - 10px);
             background-color: #000000;
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(225deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(315deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%);
+            background-position: 20px 0, 20px 0, 0 0, 0 0;
+            background-size: 40px 40px;
+            background-repeat: repeat;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -37,12 +51,13 @@
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-            padding-left: 2vw;
+           
         }
         .header-content {
             display: flex;
             align-items: center;
             width: 100%;
+            padding-left: 2vw;
             transition: transform 0.5s ease;
         }
         .header-buttons {
@@ -70,21 +85,28 @@
             margin-right: 20px;
         }
         .tagline {
+            margin-top: 80px;
+            padding-top: 3px;
             margin-left: 2vw;
             font-size: 1.5em;
             text-align: left;
             width: 95%;
+            z-index: 1;
+            position: relative;
         }
         .content-box {
-            background-color: #f0f0f0;
+            background-color: #f0f0f099;
             border-radius: 10px;
             padding: 30px;
             margin-top: 20px; /* Adjusted to push down due to fixed header */
-            width: 93%;
+            
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
             margin-bottom: 20px;
             margin-left: 2vw;
+            margin-right: 2vw;
+            z-index: 1;
+            position: relative;
         }
         .content-box button {
             background-color: #000000;
@@ -106,6 +128,8 @@
             align-items: flex-start;
             margin-top: 20px;
             width: 50%;
+            z-index: 1;
+            position: relative;
         }
         .contact-form .name-fields {
             display: flex;
@@ -155,6 +179,8 @@
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            position: relative;
         }
         .footer-content {
             margin-right: 20px;
@@ -217,5 +243,38 @@
         <span>PanicDevs</span>
     </div>
 </div>
+<script>
+
+var body = document.body;
+
+function createDots() {
+    var dotSpacing = 20; // space between dots
+    var bodyHeight = document.body.scrollHeight; // get total body height
+    for (var x = 0; x < window.innerWidth; x += dotSpacing) {
+        for (var y = 0; y < bodyHeight; y += dotSpacing) { // loop through entire body height
+            var dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+            body.appendChild(dot);
+        }
+    }
+}
+
+createDots();
+
+body.addEventListener('mousemove', function (e) {
+    var dots = document.getElementsByClassName('dot');
+    for (var i = 0; i < dots.length; i++) {
+        var dot = dots[i];
+        var rect = dot.getBoundingClientRect();
+        var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
+        var maxDist = 70; // Maximum distance for effect
+        var scale = Math.max(1, 1.8 - dist / maxDist); // Scale effect
+        dot.style.width = 4 * scale + 'px';
+        dot.style.height = 4 * scale + 'px';
+    }
+});
+</script>
 </body>
 </html>

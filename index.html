@@ -12,7 +12,19 @@
             padding: 0;
             height: 100%;
             font-family: 'Source Code Pro', monospace;
-            background-color: #f3f7ec ;
+            background-color:  #ffffff;
+            color: #000000;
+            position: relative;
+        }
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(200, 200, 200, 0.5);
+            pointer-events: none;
+            z-index: 0;
+            transition: width 0.3s ease, height 0.3s ease;
         }
         .header {
             position: fixed;
@@ -20,9 +32,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            width: (100%)- 5px;
-            background-color: #132033;
-            color: #f3f7ec;
+            width: calc(100% - 10px);
+            background-color: #000000;
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(225deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+                              linear-gradient(315deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%);
+            background-position: 20px 0, 20px 0, 0 0, 0 0;
+            background-size: 40px 40px;
+            background-repeat: repeat;
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,7 +50,6 @@
             transition: height 0.1s ease, font-size 0.1s ease;
             transition: border-radius 0.1s ease;
             border-radius: 60px;
-            
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
         }
@@ -53,8 +71,8 @@
             margin-right: 1vw;
             padding: 5px 10px;
             font-size: 2vh;
-            color: #132033 ;
-            background-color: #eadbc8;
+            color: #ffffff;
+            background-color: #333333;
             border: none;
             cursor: pointer;
             font-family: 'Source Code Pro', monospace;
@@ -62,71 +80,68 @@
             transition: 0.3s;
         }
         .header-buttons button:hover {
-            background-color: #dac0a3;
+            background-color: #555555;
         }
         .header img {
             height: 40px;
             margin-right: 20px;
         }
-        .content1 {
-            font-size: 2vh;
-            margin-top: 101vh;
+        .content1, .content2, .content3, .content4, .content5 {
             padding: 20px;
             padding-top: 10px;
-            background-color: #eadbc8;
             border-radius: 10px;
-            margin-left: 5px;
-            margin-right: 5px;       
+            margin: 15px 5px;
+            margin-bottom: 30px;
+            z-index: 1;
+            position: relative;
+        }
+        .content1 {
+            margin-top: 101vh;
+            background-color: #c0c0c04c;
+            font-size: 3vh;
+            text-align: center;
         }
         .content2 {
-            font-size: 2vh;
-            padding: 20px;
-            padding-top: 10px;
-            background-color: #dac0a3;
-            border-radius: 10px;
-            margin-top: 15px;
-            margin-right: 5px;
-            margin-left: 5px;
-                  
+            background-color: #e0e0e05a;
+            font-size: 2.2vh;
         }
         .content3 {
-            
-            font-size: 2vh;
-            padding: 20px;
-            padding-top: 10px;
-            background-color: #eadbc8;
-            border-radius: 10px;
-            margin-top: 15px;
-            margin-right: 5px;
-            margin-left: 5px;
-                  
+            background-color: #e0e0e05a;
+            font-size: 2.4vh;
+        }
+        .content3 ul {
+            list-style-type: disc;
+            padding-left: 10px;
         }
         .content4 {
-            
-            font-size: 2vh;
+            background-color: #f0f0f053;
+            font-size: 3vh;
+            text-align: center;
+        }
+        .content5 {
+            background-color: #b0b0b0;
+            font-size: 2.5vh;
+            text-align: center;
+        }
+        .content6 {
+            font-size: 2.8vh;
+            text-align: center;
             padding: 20px;
-            padding-top: 10px;
-            background-color: #eadbc8;
-            border-radius: 10px;
-            margin-top: 15px;
-            margin-right: 5px;
-            margin-left: 5px;
-                  
+            z-index: 1;
+            position: relative;
         }
         .disappear {
             opacity: 1;
             transition: opacity 0.5s ease;
-            color: #dac0a3 ;
+            color: #ffffff;
             font-size: 4vh;
         }
         .hidden1 {
             opacity: 0;   
             display: none;
-            
         }
         .hidden {
-            opacity: 0;   
-            
+            opacity: 0;
         }
         .arrow-down {
             position: absolute;
@@ -134,11 +149,36 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 2em;
-            color: #2A3647 ;
+            color: #ffffff;
             transition: opacity 0.5s ease;
         }
         .arrow-down.hidden {
             opacity: 0;
+        }
+        .footer {
+            width: calc(100% - 10px);
+            background-color: #333333; /* Lighter color than header */
+           
+            color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-family: 'Source Code Pro', monospace;
+            margin-top: 20px; /* Add some margin-top to space out from previous content */
+            border-radius: 10px;
+            margin: 5px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            position: relative;
+        }
+        .footer-content {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .footer-content span {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -155,31 +195,70 @@
             </a>
             <a href="Contact.html"><button>Contact Us</button></a>
         </div>
-       
     </div>
     <div class="arrow-down" id="arrow-down">&#x2193;</div>
 </div>
 
 <div class="content1">
-    <p>
-        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
-    <!-- Add more content here to enable scrolling -->
-    <p>We pride ourselves on our ability to translate complex requirements into user-friendly, high-performance applications that enhance business operations and user engagement. Whether you need a dynamic web application, a sophisticated mobile app, or advanced AI-driven solutions, PanicDevs is your trusted partner in building the future, one line of code at a time.</p>
-
+    <h2>Company Info</h2>
+    <p>At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth.</p>
 </div>
-<div class="content2">
-    <p>
-        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences. Our team of expert developers excels in Java and AI technologies, ensuring that we provide state-of-the-art applications tailored to meet the unique needs of our clients. From conceptualization and design to implementation and maintenance, we offer end-to-end services that drive efficiency and growth. </p>
 
-</div>
 <div class="content3">
-    <p>
-        At PanicDevs, we specialize in delivering comprehensive full-stack development solutions that seamlessly integrate front-end and back-end technologies to create robust, scalable, and innovative digital experiences.</p>
-
+    <h2>Projects</h2>
+    <ul>
+        <li>Project 1</li>
+        <li>Project 2</li>
+        <li>Project 3</li>
+        <li>Project 4</li>
+    </ul>
 </div>
-
+<div class="content4">
+    <h2>Why Us</h2>
+    <p>Choosing PanicDevs means partnering with a team that is dedicated to innovation, quality, and customer satisfaction. Our expertise in cutting-edge technologies, combined with our commitment to delivering tailored solutions, ensures that we not only meet but exceed your expectations. We are passionate about turning your vision into reality and driving your success.</p>
+</div>
+<div class="content6">
+    <h2>Quote</h2>
+    <p>"The only way to do great work is to love what you do." - Steve Jobs</p>
+</div>
+<div class="footer">
+    <div class="footer-content">
+        <span>&copy; 2024</span>
+        <span>PanicDevs</span>
+    </div>
+</div>
 <script>
     var arrowDown = document.getElementById('arrow-down');
+    var body = document.body;
+
+    function createDots() {
+        var dotSpacing = 20; // space between dots
+        var bodyHeight = document.body.scrollHeight; // get total body height
+        for (var x = 0; x < window.innerWidth; x += dotSpacing) {
+            for (var y = 0; y < bodyHeight; y += dotSpacing) { // loop through entire body height
+                var dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+                body.appendChild(dot);
+            }
+        }
+    }
+
+    createDots();
+
+    body.addEventListener('mousemove', function (e) {
+        var dots = document.getElementsByClassName('dot');
+        for (var i = 0; i < dots.length; i++) {
+            var dot = dots[i];
+            var rect = dot.getBoundingClientRect();
+            var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
+            var maxDist = 70; // Maximum distance for effect
+            var scale = Math.max(1, 1.8 - dist / maxDist); // Scale effect
+            dot.style.width = 4 * scale + 'px';
+            dot.style.height = 4 * scale + 'px';
+        }
+    });
 
     window.onscroll = function() {
         var header = document.getElementById('header');
@@ -189,10 +268,9 @@
         var scrollPosition = window.scrollY;
         var maxHeight = window.innerHeight - 10;
         var minHeight = 80;
-        var maxRadius= 60;
-        var minRadius= 10;
+        var maxRadius = 60;
+        var minRadius = 10;
 
-        
         var newHeight = Math.max(minHeight, maxHeight - scrollPosition);
         header.style.height = newHeight + 'px';
 
@@ -207,7 +285,6 @@
         var maxTranslateX = 0;
         var minTranslateX = -header.clientWidth / 2 + headerContent.clientWidth / 2 + 20;
         var translateX = Math.max(minTranslateX, maxTranslateX - (scrollPosition / maxHeight) * (maxTranslateX - minTranslateX));
-        // headerContent.style.transform = `translateX(${translateX}px)`;
 
         if (newHeight <= minHeight + 1) {
             headerButtons.style.display = 'flex';
@@ -224,10 +301,6 @@
         }
     };
 
-    //window.onresize = function() {
-    //   arrowDown.classList.add('hidden');
-    //};
-
     window.onload = function() {
         arrowDown.classList.remove('hidden1');
     };
@@ -235,4 +308,3 @@
 
 </body>
 </html>
-
