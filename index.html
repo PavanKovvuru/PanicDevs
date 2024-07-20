@@ -12,7 +12,7 @@
             padding: 0;
             height: 100%;
             font-family: 'Source Code Pro', monospace;
-            background-color:  #ffffff;
+            background-color: #ffffff;
             color: #000000;
             position: relative;
         }
@@ -23,7 +23,7 @@
             border-radius: 50%;
             background-color: rgba(200, 200, 200, 0.5);
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             transition: width 0.3s ease, height 0.3s ease;
         }
         .header {
@@ -33,14 +33,7 @@
             right: 0;
             bottom: 0;
             width: calc(100% - 10px);
-            background-color: #000000;
-            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
-                              linear-gradient(225deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
-                              linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
-                              linear-gradient(315deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%);
-            background-position: 20px 0, 20px 0, 0 0, 0 0;
-            background-size: 40px 40px;
-            background-repeat: repeat;
+            background: url('header.jpg') no-repeat center center/cover;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -48,10 +41,22 @@
             font-size: 4vh;
             z-index: 1000;
             transition: height 0.1s ease, font-size 0.1s ease;
-            transition: border-radius 0.1s ease;
             border-radius: 60px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000000;
+            opacity: 0;
+            transition: opacity 0.1s ease;
+            
+            z-index: 1;
         }
         .header-content {
             display: flex;
@@ -59,6 +64,7 @@
             width: 100%;
             padding-left: 2vw;
             transition: transform 0.5s ease;
+            z-index: 2;
         }
         .header-buttons {
             display: none;
@@ -83,8 +89,9 @@
             background-color: #555555;
         }
         .header img {
-            height: 130px;
+            height: 5vw;
             margin-right: 10px;
+            
         }
         .content1, .content2, .content3, .content4, .content5 {
             padding: 20px;
@@ -100,28 +107,42 @@
             background-color: #c0c0c04c;
             font-size: 3vh;
             text-align: center;
+            z-index: 2;
         }
         .content2 {
             background-color: #e0e0e05a;
             font-size: 2.2vh;
+            z-index: 2;
         }
         .content3 {
             background-color: #e0e0e05a;
             font-size: 2.4vh;
+            z-index: 2;
         }
         .content3 ul {
             list-style-type: disc;
             padding-left: 10px;
+            z-index: 2;
         }
         .content4 {
             background-color: #f0f0f053;
-            font-size: 3vh;
-            text-align: center;
+            font-size: 2.5vh;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .content4 img {
+            max-width: 30%;
+            border-radius: 10px;
+            filter: grayscale(100%);
+            z-index: 0;
         }
         .content5 {
             background-color: #b0b0b0;
             font-size: 2.5vh;
             text-align: center;
+            z-index: 2;
         }
         .content6 {
             font-size: 2.8vh;
@@ -129,6 +150,12 @@
             padding: 20px;
             z-index: 1;
             position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+        .content6.visible {
+            opacity: 1;
         }
         .disappear {
             opacity: 1;
@@ -137,7 +164,7 @@
             font-size: 4vh;
         }
         .hidden1 {
-            opacity: 0;   
+            opacity: 0;
             display: none;
         }
         .hidden {
@@ -151,21 +178,21 @@
             font-size: 2em;
             color: #ffffff;
             transition: opacity 0.5s ease;
+            z-index: 2;
         }
         .arrow-down.hidden {
             opacity: 0;
         }
         .footer {
             width: calc(100% - 10px);
-            background-color: #333333; /* Lighter color than header */
-           
+            background-color: #333333;
             color: #ffffff;
             padding: 20px 0;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             font-family: 'Source Code Pro', monospace;
-            margin-top: 20px; /* Add some margin-top to space out from previous content */
+            margin-top: 20px;
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
@@ -185,8 +212,9 @@
 <body>
 
 <div class="header" id="header">
+    <div class="header-overlay" id="header-overlay"></div>
     <div class="header-content" id="header-content">
-        <img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/>
+        <a href="index.html"><img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/></a>
         <span>PanicDevs</span>
         <span id="mission-text" class="disappear" style="margin-left: 50px;">'Building the Future, One Line at a Time'</span>
         <div class="header-buttons" id="header-buttons">
@@ -209,16 +237,19 @@
     <ul>
         <li>P to P Loan System</li>
         <li>AI Financial Advisor</li>
-        <li>Vertualized Medical Sytem</li>
+        <li>Vertualized Medical System</li>
         <li>...</li>
     </ul>
 </div>
 <div class="content4">
-    <h2>Join Us</h2>
-    <p>Choosing PanicDevs means partnering with a team that is dedicated to innovation, quality, and customer satisfaction. Our expertise in cutting-edge technologies, combined with our commitment to delivering tailored solutions, ensures that we not only meet but exceed your expectations. We are passionate about turning your vision into reality and driving your success.</p>
+    <div>
+        <h2>Join Us</h2>
+        <p>Choosing PanicDevs means partnering with a team that is dedicated to innovation, quality, and customer satisfaction. Our expertise in cutting-edge technologies, combined with our commitment to delivering tailored solutions, ensures that we not only meet but exceed your expectations. We are passionate about turning your vision into reality and driving your success.</p>
+    </div>
+    <img src="join.jpg" alt="Join Us">
 </div>
-<div class="content6">
-    <p>"The only way to do great work is to love what you do." - Steve Jobs</p>
+<div class="content6" id="quote">
+    <p>"The only way to do great work is to love what you do" - Steve Jobs</p>
 </div>
 <div class="footer">
     <div class="footer-content">
@@ -229,6 +260,7 @@
 <script>
     var arrowDown = document.getElementById('arrow-down');
     var body = document.body;
+    var headerOverlay = document.getElementById('header-overlay');
 
     function createDots() {
         var dotSpacing = 20; // space between dots
@@ -281,9 +313,8 @@
         var fontSize = Math.max(minFontSize, maxFontSize - (scrollPosition / maxHeight) * (maxFontSize - minFontSize));
         header.style.fontSize = fontSize + 'vh';
 
-        var maxTranslateX = 0;
-        var minTranslateX = -header.clientWidth / 2 + headerContent.clientWidth / 2 + 20;
-        var translateX = Math.max(minTranslateX, maxTranslateX - (scrollPosition / maxHeight) * (maxTranslateX - minTranslateX));
+        var opacity = Math.min(1, scrollPosition / maxHeight);
+        headerOverlay.style.opacity = opacity;
 
         if (newHeight <= minHeight + 1) {
             headerButtons.style.display = 'flex';
@@ -303,6 +334,21 @@
     window.onload = function() {
         arrowDown.classList.remove('hidden1');
     };
+
+    // Intersection Observer for quote appearance
+    const quote = document.getElementById('quote');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                quote.classList.add('visible');
+            } else {
+                quote.classList.remove('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(quote);
 </script>
 
 </body>
