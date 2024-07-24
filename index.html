@@ -55,7 +55,6 @@
             background-color: #000000;
             opacity: 0;
             transition: opacity 0.1s ease;
-            
             z-index: 1;
         }
         .header-content {
@@ -91,32 +90,71 @@
         .header img {
             height: 5vw;
             margin-right: 10px;
-            
         }
         .content1, .content2, .content3, .content4, .content5 {
             padding: 20px;
             padding-top: 10px;
             border-radius: 10px;
             margin: 15px 5px;
-            margin-bottom: 30px;
+            margin-bottom: 70px;
             z-index: 1;
             position: relative;
         }
         .content1 {
-            margin-top: 101vh;
-            background-color: #c0c0c04c;
-            font-size: 3vh;
+            margin-top: 102vh;
+            font-size: 3.5vh;
             text-align: center;
             z-index: 2;
+            position: relative;
+        }
+        .content1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('what.jpg') no-repeat center center/cover;
+            background-size: cover;
+            filter: grayscale(90%)  blur(0px);
+            
+            border-radius: 10px;
+            z-index: 0;
+            opacity: 0.3; /* Optional: Adjust the opacity to make the text more readable */
+        }
+        .content1 h2, .content1 p {
+            position: relative;
+            z-index: 1;
+            color: black; /* Ensures the text is visible against the background image */
         }
         .content2 {
-            background-color: #e0e0e05a;
-            font-size: 2.2vh;
+            
+            font-size: 3vh;
             z-index: 2;
         }
+        .content3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('image1.jpg') no-repeat center;
+           
+            background-size: cover;
+            border-radius: 10px;
+            z-index: 0;
+            opacity: 0.4; /* Optional: Adjust the opacity to make the text more readable */
+            filter: grayscale(90%)  blur(0px);
+        }
+        .content3 h2, .content3 li {
+            position: relative;
+            z-index: 2;
+            color: black; /* Ensures the text is visible against the background image */
+        }
         .content3 {
-            background-color: #e0e0e05a;
-            font-size: 2.4vh;
+           
+            font-size: 3vh;
             z-index: 2;
         }
         .content3 ul {
@@ -126,7 +164,7 @@
         }
         .content4 {
             background-color: #f0f0f053;
-            font-size: 2.5vh;
+            font-size: 2.9vh;
             text-align: left;
             display: flex;
             align-items: center;
@@ -152,7 +190,7 @@
             position: relative;
             z-index: 2;
             opacity: 0;
-            transition: opacity 2s ease;
+            transition: opacity 2.5s ease;
         }
         .content6.visible {
             opacity: 1;
@@ -249,8 +287,7 @@
     <img src="join.jpg" alt="Join Us">
 </div>
 <div class="content6" id="quote">
-    <p>"The only way to do great work is to love what you do" - Steve Jobs</p>
-</div>
+    <p>"The only way to do great work is to love what you do" - Steve Jobs</div>
 <div class="footer">
     <div class="footer-content">
         <span>&copy; 2024</span>
