@@ -7,15 +7,16 @@
     <link rel="icon" type="image/x-icon" href="/bb_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
    
-   <style>
+    <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Source Code Pro', monospace;
-            background-color:  #ffffff;
+            background-color: #ffffff;
             color: #000000;
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .dot {
             position: absolute;
@@ -35,7 +36,6 @@
             height: 80px;
             width: calc(100% - 10px);
             background-color: #000000;
-           
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -46,7 +46,6 @@
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-           
         }
         .header-content {
             display: flex;
@@ -94,7 +93,6 @@
             border-radius: 10px;
             padding: 30px;
             margin-top: 20px;
-            
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
             margin-bottom: 20px;
@@ -102,64 +100,7 @@
             margin-right: 2vw;
             z-index: 1;
             position: relative;
-        }
-        .content-box button {
-            background-color: #000000;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-            font-family: 'Source Code Pro', monospace;
-        }
-        .content-box button:hover {
-            background-color: #333333;
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-top: 20px;
-            width: 50%;
-            z-index: 1;
-            position: relative;
-        }
-        .contact-form .name-fields {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            
-        }
-        .contact-form .name-fields input {
-            width: 48%;
-            margin-right: 1vw;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #000000;
-            border-radius: 5px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        .contact-form input[type="tel"] {
-            width: 100%;
-        }
-        .contact-form button {
-            background-color: #000000;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-            font-family: 'Source Code Pro', monospace;
-        }
-        .contact-form button:hover {
-            background-color: #333333;
+            flex: 1;
         }
         .footer {
             width: calc(100% - 10px);
@@ -170,12 +111,10 @@
             justify-content: flex-end;
             align-items: center;
             font-family: 'Source Code Pro', monospace;
-            margin-top: 20px; /* Add some margin-top to space out from previous content */
             border-radius: 10px;
             margin: 5px;
             box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
             z-index: 100;
-            position: relative;
         }
         .footer-content {
             margin-right: 20px;
@@ -186,90 +125,67 @@
             margin-right: 5px;
         }
     </style>
-    <script>
-        function validateName(event) {
-            const char = String.fromCharCode(event.which);
-            if (!/[a-zA-Z]/.test(char)) {
-                event.preventDefault();
-            }
-        }
-
-        function validatePhone(event) {
-            const char = String.fromCharCode(event.which);
-            if (!/[0-9]/.test(char)) {
-                event.preventDefault();
-            }
-        }
-    </script>
 </head>
 <body>
-<div class="header" id="header">
-    <div class="header-content" id="header-content">
-        <a href="index.html"><img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/></a>
-        <span>PanicDevs</span>
-        <div class="header-buttons" id="header-buttons">
-           <a href="index.html"><button>Home Page</button></a>
-           <a href="About.html"><button>About Us</button></a>
-        </div>   
-    </div>
-</div>
-
-<div class="tagline">
-    <p>Why Choose PanicDevs? We deliver cutting-edge solutions with efficiency and reliability.</p>
-</div>
-
-<div class="content-box">
-    <h1>Let's Connect</h1>
-    <form class="contact-form">
-        <div class="name-fields">
-            <input type="text" name="firstName" placeholder="First Name" onkeypress="validateName(event)" required>
-            <input type="text" name="lastName" placeholder="Last Name" onkeypress="validateName(event)" required>
+    <div class="header" id="header">
+        <div class="header-content" id="header-content">
+            <a href="index.html"><img src="/c_logo.png" alt="PanicDevs Logo" id="header-logo"/></a>
+            <span>PanicDevs</span>
+            <div class="header-buttons" id="header-buttons">
+                <a href="index.html"><button>Home Page</button></a>
+                <a href="About.html"><button>About Us</button></a>
+            </div>   
         </div>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Phone Number" onkeypress="validatePhone(event)" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div class="footer">
-    <div class="footer-content">
-        <span>&copy; 2024</span>
-        <span>PanicDevs</span>
     </div>
-</div>
-<script>
 
-var body = document.body;
+    <div class="tagline">
+        <p>Why Choose PanicDevs? We deliver cutting-edge solutions with efficiency and reliability.</p>
+    </div>
 
-function createDots() {
-    var dotSpacing = 20; // space between dots
-    var bodyHeight = document.body.scrollHeight; // get total body height
-    for (var x = 0; x < window.innerWidth; x += dotSpacing) {
-        for (var y = 0; y < bodyHeight; y += dotSpacing) { // loop through entire body height
-            var dot = document.createElement('div');
-            dot.className = 'dot';
-            dot.style.left = x + 'px';
-            dot.style.top = y + 'px';
-            body.appendChild(dot);
+    <div class="content-box">
+        <h1>Let's Connect</h1>
+        <p>To contact us, please email: <a href="mailto:panicdevs.contact@gmail.com">panicdevs.contact@gmail.com</a></p>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <span>&copy; 2024</span>
+            <span>PanicDevs</span>
+        </div>
+    </div>
+
+    <script>
+        var body = document.body;
+
+        function createDots() {
+            var dotSpacing = 20; // space between dots
+            var bodyHeight = document.body.scrollHeight; // get total body height
+            for (var x = 0; x < window.innerWidth; x += dotSpacing) {
+                for (var y = 0; y < bodyHeight; y += dotSpacing) { // loop through entire body height
+                    var dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.style.left = x + 'px';
+                    dot.style.top = y + 'px';
+                    body.appendChild(dot);
+                }
+            }
         }
-    }
-}
 
-createDots();
+        createDots();
 
-body.addEventListener('mousemove', function (e) {
-    var dots = document.getElementsByClassName('dot');
-    for (var i = 0; i < dots.length; i++) {
-        var dot = dots[i];
-        var rect = dot.getBoundingClientRect();
-        var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
-        var maxDist = 70; // Maximum distance for effect
-        var scale = Math.max(1, 2 - dist / maxDist); // Scale effect
-        dot.style.width = 4 * scale + 'px';
-        dot.style.height = 4 * scale + 'px';
-    }
-});
-</script>
+        body.addEventListener('mousemove', function (e) {
+            var dots = document.getElementsByClassName('dot');
+            for (var i = 0; i < dots.length; i++) {
+                var dot = dots[i];
+                var rect = dot.getBoundingClientRect();
+                var dist = Math.sqrt(Math.pow(rect.x - e.clientX, 2) + Math.pow(rect.y - e.clientY, 2));
+                var maxDist = 70; // Maximum distance for effect
+                var scale = Math.max(1, 2 - dist / maxDist); // Scale effect
+                dot.style.width = 4 * scale + 'px';
+                dot.style.height = 4 * scale + 'px';
+            }
+        });
+    </script>
 </body>
 </html>
+
